@@ -12,8 +12,18 @@ Rails.application.routes.draw do
       get :followings
       get :followers
     end
+    
+    member do 
+      get :favor_followings
+    end
+      
   end
    
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  
+  #お気に入り機能
+  resources :favorites, only: [:create, :destroy, :index]
+  
+
 end

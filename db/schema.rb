@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 20171213052821) do
 
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.integer  "microposts_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["microposts_id"], name: "index_favorites_on_microposts_id", using: :btree
-    t.index ["user_id", "microposts_id"], name: "index_favorites_on_user_id_and_microposts_id", unique: true, using: :btree
+    t.integer  "micropost_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["micropost_id"], name: "index_favorites_on_micropost_id", using: :btree
+    t.index ["user_id", "micropost_id"], name: "index_favorites_on_user_id_and_micropost_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171213052821) do
     t.datetime "updated_at",      null: false
   end
 
-  add_foreign_key "favorites", "microposts", column: "microposts_id"
+  add_foreign_key "favorites", "microposts"
   add_foreign_key "favorites", "users"
   add_foreign_key "microposts", "users"
   add_foreign_key "relationships", "users"
