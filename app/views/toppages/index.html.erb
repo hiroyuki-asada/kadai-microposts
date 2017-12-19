@@ -8,10 +8,9 @@
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
     </aside>
+    <button type="button" class="btn btn-default"><%= link_to 'お気に入りリスト一覧', favorites_path %></button>
     <div class="col-xs-8">
       <%= render 'microposts/microposts', microposts: @microposts %>
-       
-      
     </div>
   </div>
 <% else %>
